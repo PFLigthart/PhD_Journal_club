@@ -1,0 +1,109 @@
+\documentclass[aspectratio=169,xcolor={svgnames,table},10pt,fleqn]{beamer}
+\usepackage{stb-beamer-a}
+
+%---- AMS math ---------------------------------------------------------
+\usepackage{amsmath,amsthm}
+
+%---- Fonts ------------------------------------------------------------
+\usefonttheme{professionalfonts}
+
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[default,medium,scaled=1.0]{raleway}
+\usepackage[scaled=0.80]{arevmath}
+
+%---- Packages ---------------------------------------------------------
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,shapes.geometric}
+\usepackage{pgfplots}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\cmidrulewidth=\heavyrulewidth
+
+\graphicspath{{figs/}}
+
+%---- Title page -------------------------------------------------------
+
+\title[\footnotesize Journal Club]
+      {\Large Bone fracture healing under Ilizarov fixator: Influence of fixator configuration, fracture geometry, and loading}
+%\subtitle{}
+
+\author{Philip Frederik Ligthart}
+\institute{\itshape Dept of Mech \& Mechatronic Eng,\\
+           Stellenbosch University, South Africa}
+
+\date{}
+
+\def\titlefig{\includegraphics[height=5cm]{Figs/FEM_model_a.png}}
+
+%====================================================================
+\begin{document}
+\begin{frame}
+  \maketitle
+\end{frame}
+
+\section{Necessary background}
+
+  \begin{frame}
+    \frametitle{Bone fracture healing}
+    \begin{columns}
+    \column{0.5\textwidth}
+      \textbf{Primary bone healing}
+      \begin{itemize}
+        \item Every day process
+        \item Requires absolute stability
+      \end{itemize}
+    \column{0.5\textwidth}
+      \textbf{Secondary bone healing}
+      \begin{itemize}
+        \item Occurs with relative stability
+        \item Involves callus formation - new bone
+      \end{itemize}
+    \end{columns}
+    \vspace{1cm}
+    \begin{columns}
+      \column{0.5\textwidth}
+      \begin{itemize}
+        \item Plate fixation
+        \item intramedullary nailing
+      \end{itemize}
+      \column{0.5\textwidth}
+      \begin{itemize}
+        \item External fixation
+      \end{itemize}
+    \end{columns}
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{Secondary bone healing}
+    \begin{itemize}
+      \item Bone ends are not in direct contact
+      \item Relative motion between bone ends - Interfragmentary movement (IFM)
+      \item Bone healing is influenced (theories) by Interfragmentary strain (IFS)
+      \vspace{1cm}
+      \item Found 10 different mechanoregulation measures in literature
+    \end{itemize}
+    \vspace{1cm}
+    Generally, \qtyrange[range-phrase = --, range-units = single]{2}{10}{\percent} engineering strain is desired
+  \end{frame}
+\section{Talk focus}
+
+  \begin{frame}
+    \frametitle{Focus of the talk}
+    % Create a flow chart with three side by side boxes each containing a label and arrows from left to right
+    \begin{center}
+      \begin{tikzpicture}
+        \node[draw,rectangle,minimum width=2cm,minimum height=1cm] (A) {Broken Bone};
+        \node[above=0.5cm of A] {Input};
+        \node[draw,rectangle,minimum width=2cm,minimum height=1cm,right=of A] (B) {Fixation configuration};
+        \node[above=0.5cm of B] {Function};
+        \node[draw,rectangle,minimum width=2cm,minimum height=1cm,right=of B] (C) {Bone healing};
+        \node[above=0.5cm of C] {Output};
+        \draw[thick,->] (A) -- (B);
+        \draw[thick,->] (B) -- (C);
+      \end{tikzpicture}
+    \end{center}
+  \end{frame}
+
+\end{document}
