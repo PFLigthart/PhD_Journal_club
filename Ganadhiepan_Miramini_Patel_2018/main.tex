@@ -87,6 +87,24 @@
     \vspace{1cm}
     Generally, \qtyrange[range-phrase = --, range-units = single]{2}{10}{\percent} engineering strain is desired
   \end{frame}
+
+  \begin{frame}
+    \frametitle{Ilizarov fixator}
+    \begin{columns}
+      \column{0.5\textwidth}
+      \begin{itemize}
+        \item Circular rings
+        \item Tensioned wires - k-wires - \qtyrange[range-phrase = --, range-units = single]{1.5}{1.8}{\milli\meter}
+        \item Half pins - Schanz screws - \qtyrange[range-phrase = --, range-units = single]{3}{6}{\milli\meter}
+        \item Threaded rods
+      \end{itemize}
+      \column{0.5\textwidth}
+      \centering
+      \textbf{Taylor Spatial Frame (TSF)}
+      \includegraphics[height=6cm]{Figs/FEM_model_a.png}
+    \end{columns}
+  \end{frame}
+
 \section{Talk focus}
 
   \begin{frame}
@@ -104,6 +122,25 @@
         \draw[thick,->] (B) -- (C);
       \end{tikzpicture}
     \end{center}
+  \end{frame}
+
+\section{Numerical model}
+
+  \begin{frame}
+    \frametitle{Finite element model}
+    \begin{itemize}
+      \item Second order tetrahedral elements - all parts
+      \item $\approx$ \qty{215000}{elements}
+      \item Convergence criteria:
+        \begin{itemize}
+          \item \qty{0.1}{\milli\meter} for displacement (Absolute)
+        \end{itemize}
+      \item Mesh convergence study
+        \begin{itemize}
+          \item $\le\qty{2}{\percent}$ difference between meshes considered converged 
+        \end{itemize}
+    \end{itemize}
+
   \end{frame}
 
 \end{document}
