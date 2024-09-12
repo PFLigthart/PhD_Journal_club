@@ -35,7 +35,7 @@
 
 \date{}
 
-\def\titlefig{\includegraphics[height=5cm]{Figs/FEM_model_a.png}}
+\def\titlefig{\includegraphics[height=5cm]{Figs/Front_two_pages}}
 
 %====================================================================
 \begin{document}
@@ -66,7 +66,7 @@
       \column{0.5\textwidth}
       \begin{itemize}
         \item Plate fixation
-        \item intramedullary nailing
+        \item Intramedullary nailing
       \end{itemize}
       \column{0.5\textwidth}
       \begin{itemize}
@@ -128,10 +128,12 @@
 
   \begin{frame}
     \frametitle{General model setup}
-    The same general model setup was used for all simulations and the experimental validation
+    The same general model setup was used simulation and experimental validation
     \begin{itemize}
-      \item Perpendicular wires
-      \item etc.
+      \item CT scan of a human tibia used
+      \item Perpendicular k-wires
+      \item Strut angle of \qty{65}{\degree} remained constant
+      \item Bones centred in the rings
     \end{itemize}
   \end{frame}
 
@@ -139,7 +141,24 @@
 
   \begin{frame}
     \frametitle{Finite element model}
+    \begin{columns}
+      \column{0.5\textwidth}
+      \begin{itemize}
+        \item Homogeneous, linear elastic material properties
+        \item Axial load applied as a point load
+        \item Geometric non-linearity included for strain stiffening of k-wires
+        \item Bone k-wire interface modelled using RBE2 elements (or equivalent)
+      \end{itemize}
+      \column{0.5\textwidth}
+      \centering
+      \includegraphics[height=6cm]{Figs/FEM_model_b.png}
+    \end{columns}
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{Finite element parameters}
     \begin{itemize}
+      \item COMSOL Multiphysics used for the simulations
       \item Second order tetrahedral elements - all parts
       \item $\approx$ \qty{215000}{elements}
       \item Convergence criteria:
@@ -151,7 +170,72 @@
           \item $\le\qty{2}{\percent}$ difference between meshes considered converged 
         \end{itemize}
     \end{itemize}
+  \end{frame}
 
+\section{Validation}
+
+  \begin{frame}
+    \frametitle{Validation}
+    \centering
+    \includegraphics[height=6cm]{Figs/Validation}
+    \begin{itemize}
+      \item Used the ARAMIS DIC system to measure displacements.
+      \item Quote accuracy of \qty{0.0002}{\milli\meter}
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{\qty{130}{\milli\meter} ring}
+    \centering
+    \includegraphics[height=6cm]{Figs/130mm_results}
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{\qty{155}{\milli\meter} ring}
+    \centering
+    \includegraphics[height=6cm]{Figs/155mm_results}
+  \end{frame}
+
+\section{Parametric study}
+
+  \begin{frame}
+    \frametitle{Parameters}
+    \begin{table}
+      \begin{tabular}{lll}
+        \toprule
+        Count & Parameter & Variations \\
+        \midrule
+        2 & Ring diameter & \qtylist[list-units = single]{130;155}{\milli\meter} \\
+        3 & K-wire tension & \qtylist[list-units = single]{50;90;130}{\kilo\gram} \\
+        3 & Gap size & \qtylist[list-units = single]{1;3;5}{\milli\meter} \\
+        3 & Axial load & \qtylist[list-units = single]{100;150;200}{\kilo\gram} \\
+        \bottomrule
+      \end{tabular}
+    \end{table}
+    \vspace{1cm}
+    Factorial design: $2 \times 3 \times 3 \times 3 = 54$\\
+    However: \num{18} simulations were performed
+  \end{frame}
+
+\section{Insights}
+
+  \begin{frame}
+    \frametitle{Insights}
+    \begin{itemize}
+      \item Found that out of plane motion/torsion is negligible
+      \item Gap size is by far the most influential parameter
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{Shortcomings}
+    \begin{itemize}
+      \item Previous authors have found slipping between bone and k-wire -- not considered
+      \item Loading limits results -- could explain the lack of out of plane motion
+      \item Previous authors have shown yielding of k-wires -- not considered
+      \item Output measure is not clear -- measurable IFM or IFS would be more interpretable
+      \item Increasing stiffness of callus region not considered
+    \end{itemize}
   \end{frame}
 
 \end{document}
